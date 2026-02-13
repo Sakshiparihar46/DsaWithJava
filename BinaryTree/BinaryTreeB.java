@@ -39,6 +39,39 @@ public class BinaryTreeB {
         int rs=sum(root.right);
         return ls+rs+root.data;
     }
+
+    public static int diameter(Node root){
+        if(root==null){
+            return 0;
+        }
+        int leftDiam=diameter(root.left);
+        int leftht=height(root.left);
+        int rightDiam=diameter(root.right);
+        int rightht=height(root.right);
+
+        int selfDiam=leftht+rightht+1;
+        return Math.max(Math.max(leftDiam,rightDiam),selfDiam);
+    }
+    
+    static class Info{
+        int diam;
+        int ht;
+        public Info(int diam,int ht){
+            this.diam=diam;
+            this.ht=ht;
+        }
+    }
+    public static Info diameter2(Node root){
+        if(root==null){
+            return new Info(0, 0);
+        }
+        Info leftInfo=diameter2(root.left);
+        Info rightInfo=diameter2(root.right);
+
+        int diam=Math.max(Math.max(leftInfo.diam,rightInfo.diam),leftInfo.ht+rightInfo.ht+1);
+        int ht=Math.max(leftInfo.ht,rightInfo.ht)+1;
+        return new Info(diam,ht);
+    }
     public static void main(String[] args) {
         Node root=new Node(1);
         root.left=new Node(2);
@@ -50,7 +83,9 @@ public class BinaryTreeB {
 
         // System.out.println(height(root));
         // System.out.println(count(root));
+        // System.out.println(sum(root));
 
-        System.out.println(sum(root));
+        System.out.println(diameter2(root).ht);
+
     }
 }
