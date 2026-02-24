@@ -143,6 +143,19 @@ public class BinaryTreeB {
             System.out.print(map.get(i).data+" ");
         }
     }
+
+    public static void KLevel(Node root,int level,int k){
+        if(root==null){
+            return;
+        }
+        if(level==k){
+            System.out.print(root.data+" ");
+            return;
+        }
+        KLevel(root.left, level+1,k);
+        KLevel(root.right, level+1,k);
+
+    }
     public static void main(String[] args) {
 
         //tree
@@ -154,7 +167,7 @@ public class BinaryTreeB {
         root.right.left=new Node(6);
         root.right.right=new Node(7);
 
-
+        int k=2;
         //subtree
         // Node subRoot=new Node(2);
         // subRoot.left=new Node(4);
@@ -162,12 +175,12 @@ public class BinaryTreeB {
         // System.out.println(height(root));
         // System.out.println(count(root));
         // System.out.println(sum(root));
-
         // System.out.println(diameter2(root).ht); 
-
         // System.out.println(isSubtree(root, subRoot));
 
 
-        topView(root);
+        // topView(root);
+
+        KLevel(root,1, k);
     }
 }
