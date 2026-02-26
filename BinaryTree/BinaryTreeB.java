@@ -12,93 +12,93 @@ public class BinaryTreeB {
         }
     }
 
-    // public static int height(Node root){
-    //     if(root==null){
-    //         return 0;
-    //     }
+    public static int height(Node root){
+        if(root==null){
+            return 0;
+        }
 
-    //     int lh=height(root.left);
-    //     int rh=height(root.right);
-    //     return Math.max(lh,rh)+1; 
-    // }
+        int lh=height(root.left);
+        int rh=height(root.right);
+        return Math.max(lh,rh)+1; 
+    }
 
-    // public static int count(Node root){
-    //     if(root==null){
-    //         return 0;
-    //     }
-    //     int lc=count(root.left);
-    //     int rc=count(root.right);
-    //     return lc+rc+1;
-    // }
+    public static int count(Node root){
+        if(root==null){
+            return 0;
+        }
+        int lc=count(root.left);
+        int rc=count(root.right);
+        return lc+rc+1;
+    }
     
-    // public static int sum(Node root){
-    //     if(root==null){
-    //         return 0;
-    //     }
-    //     int ls=sum(root.left);
-    //     int rs=sum(root.right);
-    //     return ls+rs+root.data;
-    // }
+    public static int sum(Node root){
+        if(root==null){
+            return 0;
+        }
+        int ls=sum(root.left);
+        int rs=sum(root.right);
+        return ls+rs+root.data;
+    }
 
-    // public static int diameter(Node root){
-    //     if(root==null){
-    //         return 0;
-    //     }
-    //     int leftDiam=diameter(root.left);
-    //     int leftht=height(root.left);
-    //     int rightDiam=diameter(root.right);
-    //     int rightht=height(root.right);
+    public static int diameter(Node root){
+        if(root==null){
+            return 0;
+        }
+        int leftDiam=diameter(root.left);
+        int leftht=height(root.left);
+        int rightDiam=diameter(root.right);
+        int rightht=height(root.right);
 
-    //     int selfDiam=leftht+rightht+1;
-    //     return Math.max(Math.max(leftDiam,rightDiam),selfDiam);
-    // }
+        int selfDiam=leftht+rightht+1;
+        return Math.max(Math.max(leftDiam,rightDiam),selfDiam);
+    }
     
-    // static class Info{
-    //     int diam;
-    //     int ht;
-    //     public Info(int diam,int ht){
-    //         this.diam=diam;
-    //         this.ht=ht;
-    //     }
-    // }
-    // public static Info diameter2(Node root){
-    //     if(root==null){
-    //         return new Info(0, 0);
-    //     }
-    //     Info leftInfo=diameter2(root.left);
-    //     Info rightInfo=diameter2(root.right);
+    static class Info{
+        int diam;
+        int ht;
+        public Info(int diam,int ht){
+            this.diam=diam;
+            this.ht=ht;
+        }
+    }
+    public static Info diameter2(Node root){
+        if(root==null){
+            return new Info(0, 0);
+        }
+        Info leftInfo=diameter2(root.left);
+        Info rightInfo=diameter2(root.right);
 
-    //     int diam=Math.max(Math.max(leftInfo.diam,rightInfo.diam),leftInfo.ht+rightInfo.ht+1);
-    //     int ht=Math.max(leftInfo.ht,rightInfo.ht)+1;
-    //     return new Info(diam,ht);
-    // }
+        int diam=Math.max(Math.max(leftInfo.diam,rightInfo.diam),leftInfo.ht+rightInfo.ht+1);
+        int ht=Math.max(leftInfo.ht,rightInfo.ht)+1;
+        return new Info(diam,ht);
+    }
 
-    // public static boolean isIdentical(Node node,Node subRoot){
-    //     if(node==null && subRoot==null){
-    //         return true;
-    //     }else if(node == null || subRoot==null||node.data !=subRoot.data){
-    //         return false;
-    //     }
-    //     if(!isIdentical(node.left, subRoot.left)){
-    //         return false;
-    //     }
-    //     if(!isIdentical(node.right, subRoot.right)){
-    //         return false;
-    //     }
-    //     return true;
-    // }
+    public static boolean isIdentical(Node node,Node subRoot){
+        if(node==null && subRoot==null){
+            return true;
+        }else if(node == null || subRoot==null||node.data !=subRoot.data){
+            return false;
+        }
+        if(!isIdentical(node.left, subRoot.left)){
+            return false;
+        }
+        if(!isIdentical(node.right, subRoot.right)){
+            return false;
+        }
+        return true;
+    }
 
-    // public static boolean isSubtree(Node root,Node subRoot){
-    //     if(root==null){
-    //         return false;
-    //     }
-    //     if(root.data==subRoot.data){
-    //         if(isIdentical(root,subRoot)){
-    //             return true;
-    //         }
-    //     }
-    //     return isSubtree(root.left, subRoot)||isSubtree(root.right, subRoot);
-    // }
+    public static boolean isSubtree(Node root,Node subRoot){
+        if(root==null){
+            return false;
+        }
+        if(root.data==subRoot.data){
+            if(isIdentical(root,subRoot)){
+                return true;
+            }
+        }
+        return isSubtree(root.left, subRoot)||isSubtree(root.right, subRoot);
+    }
     static class info{
         Node node;
         int hd;
@@ -238,8 +238,32 @@ public class BinaryTreeB {
 
     public static int minDist(Node root,int n1,int n2){
        Node lca=lca2(root,n1,n2); 
-       int dist1=lcaDist(root,n1);
-       int dist2=lcaDist(root,n2);
+       int dist1=lcaDist(lca,n1);
+       int dist2=lcaDist(lca,n2);
+       return dist1+dist2;
+    }
+
+    public static int transform(Node root){
+        if(root==null){
+            return 0;
+        }
+        int leftChild=transform(root.left);
+        int rightChild=transform(root.right);
+
+        int data=root.data;
+        int newLeft=root.left==null?0:root.left.data;
+        int newRight=root.right==null?0:root.right.data;
+        root.data=newLeft+leftChild+newRight+rightChild;
+        return data;
+    }
+
+    public static void preorder(Node root){
+        if(root==null){
+            return;
+        }
+        System.out.print(root.data+" ");
+        preorder(root.left);
+        preorder(root.right);
     }
     public static void main(String[] args) {
 
@@ -252,7 +276,7 @@ public class BinaryTreeB {
         root.right.left=new Node(6);
         root.right.right=new Node(7);
 
-        //subtree
+        // subtree
         // Node subRoot=new Node(2);
         // subRoot.left=new Node(4);
         // subRoot.right=new Node(5);
@@ -262,11 +286,16 @@ public class BinaryTreeB {
         // System.out.println(diameter2(root).ht); 
         // System.out.println(isSubtree(root, subRoot));
         
-        // int k=2;
-        // topView(root);
-        // KLevel(root,1, k);
+        int k=2;
+        topView(root);
+        KLevel(root,1, k);
 
         int n1=4,n2=7;
         System.out.println(lca2(root, n1, n2).data);
+        System.out.println(minDist(root, n1, n2));
+
+        transform(root);
+        preorder(root);
+
     }
 }
