@@ -20,7 +20,70 @@ public class AVLTrees {
         return root.height;
     }
 
+    static int max(int a,int b){
+        return (a>b)?a:b;
+    }
+
+    //Right rotate subtree rooted with y
+    public static Node rightRotate(Node y){
+        Node x=y.left;
+        Node T2=x.right;
+
+        //perform rotation
+        x.right=y;
+        y.left=T2;
+    }
+
+    public static Node insert(Node root,int key){
+        if(root==null){
+            return new Node(key);
+        }
+        if(key<root.data){
+            root.left=insert(root.left,key);
+        }else if(key>root.data){
+            root.right=insert(root.right, key);
+        }else{
+            return root;
+        }
+
+        //updata root height
+        root.height=1+Math.max(height(root.left),height(root.right));
+
+        //get root's balance factor
+        int bf=getBalance(root);
+
+        //left left case
+        if(bf>1 && key<root.left.data){
+            return rightRotate(root);
+        }
+
+        //right right case
+        if(bf<-1 && key>root.right.data){
+            return leftRotate(root);
+        }
+
+        //left right case
+        if(bf>1 && key>root.left.data){
+            root.left=leftRotate(root.left);
+            return rightRotate(root);
+        }
+
+        //right left case
+        if(bf<-1 && key<root.right.data){
+            root.right=rightRotate(root.right);
+            return leftRotate(root);
+        }
+        return root;//return if Avl is balanced
+    }
+
     public static void main(String[] args) {
-        
+        root=insert(root,10);
+        root=insert(root,20);
+        root=insert(root,30);
+        root=insert(root,40);
+        root=insert(root,50);
+        root=insert(root,25);
+
+        preorder(root);
     }
 }
