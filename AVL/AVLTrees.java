@@ -108,6 +108,16 @@ public class AVLTrees {
         return root;//return if Avl is balanced
     }
 
+    public static void preorder(Node root){
+        if(root==null){
+            return ;
+        }
+
+        System.out.print(root.data+" ");
+        preorder(root.left);
+        preorder(root.right);
+    } 
+
     public static void main(String[] args) {
         root=insert(root,10);
         root=insert(root,20);
