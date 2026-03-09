@@ -13,6 +13,7 @@ public class AVLTrees {
 
     public static Node root;
 
+    //calculate height of the tree
     public  static int height(Node root){
         if(root==null){
             return 0;
