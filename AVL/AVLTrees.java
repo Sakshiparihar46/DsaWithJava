@@ -24,6 +24,24 @@ public class AVLTrees {
         return (a>b)?a:b;
     }
 
+    //left rotation
+    public static Node leftRotate(Node x){
+        Node y=x.right;
+        Node T2=y.left;
+
+        //perform rotation
+        y.left=x;
+        x.right=T2;
+
+        //Update heights
+        x.height=max(height(x.left),height(x.right))+1;
+        y.height=max(height(y.left),height(y.right))+1;
+
+        //return new root
+        return y;
+    }
+
+
     //Right rotate subtree rooted with y
     public static Node rightRotate(Node y){
         Node x=y.left;
@@ -32,6 +50,20 @@ public class AVLTrees {
         //perform rotation
         x.right=y;
         y.left=T2;
+
+        //update height
+          x.height=max(height(x.left),height(x.right))+1;
+          y.height=max(height(y.left),height(y.right))+1;
+
+          return x;
+    }
+
+    //get balance factor of node
+    public static int getBalance(Node root){
+        if(root==null){
+            return 0;
+        }
+        return height(root.left)-height(root.right);
     }
 
     public static Node insert(Node root,int key){
@@ -43,7 +75,7 @@ public class AVLTrees {
         }else if(key>root.data){
             root.right=insert(root.right, key);
         }else{
-            return root;
+            return root;//duplicate key is not allowed
         }
 
         //updata root height
