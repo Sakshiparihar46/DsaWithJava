@@ -18,6 +18,9 @@ public class Heap1 {
                 arr.set(par, temp);
             }
         }
+        public int peek(){
+            return arr.get(0);
+        }
     }
 
     public static void main(String[] args) {
