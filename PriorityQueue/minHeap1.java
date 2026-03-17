@@ -1,6 +1,6 @@
 package PriorityQueue;
 import java.util.*;
-public class Heap1 {
+public class minHeap1 {
     static class Heap{
         ArrayList<Integer> arr=new ArrayList<>();
 
