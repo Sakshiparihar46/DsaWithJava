@@ -8,6 +8,19 @@ public class hashmap2 {
     hm.put("China", 150);  
     hm.put("US", 50);  
     hm.put("indonesia", 6);  
-    hm.put("Nepal", 5);  
+    hm.put("Nepal", 5); 
+    
+    //iterate
+    Set<String> keys=hm.keySet();
+    System.out.print(keys);
+    System.out.println();
+
+    //entrySet
+    System.out.println(hm.entrySet());
+
+    for (String k : keys) {
+        System.out.println("key="+k+" value="+hm.get(k));
+    }
+    
    } 
 }
