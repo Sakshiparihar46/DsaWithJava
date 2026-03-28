@@ -11,16 +11,16 @@ public class hashmap1{
 
         System.out.println(hm);
 
-        // //get
-        // int val=hm.get("Tea");
-        // System.out.println(val);
+        //get
+        int val=hm.get("Tea");
+        System.out.println(val);
 
-        // //containsKey  
-        // System.out.println(hm.containsKey("india"));
+        //containsKey  
+        System.out.println(hm.containsKey("india"));
 
-        // //remove
-        // System.out.println(hm.remove("Tea"));
-        // System.out.println(hm);
+        //remove
+        System.out.println(hm.remove("Tea"));
+        System.out.println(hm);
 
         //size
         System.out.println(hm.size());
