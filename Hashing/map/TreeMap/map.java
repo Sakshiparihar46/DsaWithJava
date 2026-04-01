@@ -1,4 +1,4 @@
-package Hashing.TreeMap;
+package Hashing.map.TreeMap;
 import java.util.TreeMap;
 
 public class map {

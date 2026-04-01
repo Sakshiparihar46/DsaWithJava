@@ -1,4 +1,4 @@
-package Hashing.LinkedHashMap;
+package Hashing.map.LinkedHashMap;
 import java.util.*;
 public class map1 {
     public static void main(String[] args) {
