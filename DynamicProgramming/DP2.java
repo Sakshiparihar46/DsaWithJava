@@ -27,6 +27,21 @@ public class DP2 {
         return w[n];
     } 
 
+    //tabulation
+    public static int ways3(int n){
+          int dp[]=new int[n+1];
+          dp[0]=1;
+
+          for(int i=1;i<=n;i++){
+            if(i==1){
+                dp[i]=dp[i-1]+0;
+            }else{
+                dp[i]=dp[i-1]+dp[i-2];
+            }
+          }
+          return dp[n];
+    }
+
     public static void main(String args[]){
         int n=5;
         // System.out.println(ways(n));
@@ -35,5 +50,7 @@ public class DP2 {
         int ways[]=new int [n+1];
         Arrays.fill(ways,-1);
         System.out.println(ways2(n, ways));
+
+        System.out.println(ways3(n));
     }
 }
