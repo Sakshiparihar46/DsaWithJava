@@ -2,7 +2,6 @@ package DynamicProgramming;
 
 public class DP9 {
     public static int longestCommonSubstring(String str1,String str2,int n,int m){
-        int ans=0;
         int dp[][]=new int[n+1][m+1];
         int maxVal=0;
         for (int i = 1; i < n+1; i++) {
