@@ -46,10 +46,8 @@ public class tries2 {
         for (int i = 1; i <= key.length(); i++) {
            if(search( key.substring(0,i)) && wordBreak(key.substring(i))){
             return true;
-           }
-            
+           } 
         }
-
         return false;
     }
     public static void main(String[] args) {

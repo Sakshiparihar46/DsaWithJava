@@ -1,7 +1,5 @@
 package tries;
 
-import java.util.*;
-
 public class tries3 {
     static class Node{ 
         Node[] children=new Node[26];
