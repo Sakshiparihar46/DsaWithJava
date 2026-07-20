@@ -40,11 +40,11 @@ public class DP3 {
         }
 
     }
-
+    public static  int dp[][];
     //tabulation
     public static int knapsack3(int val[],int wt[],int W){
         int n=val.length;
-        int dp[][]=new int[n+1][W+1];
+        dp=new int[n+1][W+1];
         for(int i=0;i<dp.length;i++){//0th col
             dp[i][0]=0;
         }
@@ -73,17 +73,23 @@ public class DP3 {
         int val[]={15,14,10,45,30};
         int wt[]={2,5,1,3,4};
         int W=7;
-        int dp[][]=new int[val.length+1][W+1];
-        for (int i = 0; i < dp.length; i++) {
-            for (int j = 0; j < dp[0].length; j++) {
-                dp[i][j]=-1;
-            }
-        }
+        // int dp[][]=new int[val.length+1][W+1];
+        // for (int i = 0; i < dp.length; i++) {
+        //     for (int j = 0; j < dp[0].length; j++) {
+        //         dp[i][j]=-1;
+        //     }
+        // }
 
         // System.out.println(knapsack(val, wt, W, val.length));
 
         // System.out.println(knapsack2(val, wt, W,val.length,dp));
 
         System.out.println(knapsack3(val, wt, W));
+         for(int i=0;i<dp.length;i++){
+            for (int j = 0; j < dp[0].length; j++) {
+                System.out.print(dp[i][j]+" ");
+            }
+            System.out.println();
+        }
     }
 }
