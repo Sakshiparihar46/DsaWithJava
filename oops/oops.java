@@ -14,6 +14,16 @@ class pen{
         this.color=s2.color;
         this.type=s2.type;
     }
+
+    //polyMorphism
+
+    public void printinfo(String color){
+        System.out.println(color);
+    }
+    public void printinfo(String color,String type){
+        System.out.println(color+type);
+    }
+
 }
 public class oops {
     public static void main(String[] args) {
@@ -24,5 +34,8 @@ public class oops {
         pen p2=new pen(pen1);
         System.out.println(p2.color);
         System.out.println(p2.type);
+
+        p2.printinfo(p2.color,p2.type);
+        p2.printinfo(p2.color);
     }
 }
