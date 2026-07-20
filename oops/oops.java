@@ -14,9 +14,12 @@ class pen{
         this.color=s2.color;
         this.type=s2.type;
     }
-
+    // setters
+    public void setInfo(String color){
+        this.color=color;
+    }
     //polyMorphism
-
+    //getters
     public void printinfo(String color){
         System.out.println(color);
     }
@@ -34,7 +37,7 @@ public class oops {
         pen p2=new pen(pen1);
         System.out.println(p2.color);
         System.out.println(p2.type);
-
+        p2.setInfo("blue");
         p2.printinfo(p2.color,p2.type);
         p2.printinfo(p2.color);
     }
